@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Added smoother transition for theme changes */
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.canvas-load {
+  font-size: 14px;
+  color: #f1f1f1;
+  font-weight: 800;
+}
+
+.top-blur {
+  position: absolute;
+  width: 30vw;
+  height: 50vw;
+  min-width: 350px;
+  min-height: 250px;
+  top: -128px;
+  left: 10vw;
+  border-radius: 764px;
+  background: rgba(14, 72, 179, 0.2);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.bottom-blur {
+  position: absolute;
+  width: 70vw;
+  height: 50vw;
+  min-width: 350px;
+  min-height: 250px;
+  top: 246px;
+  right: -25vw;
+  border-radius: 764px;
+  background: rgba(136, 3, 253, 0.4);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-animation 1000s linear infinite;
+}
+
+@keyframes rainbow-animation {
+  to {
+    background-position: 4500vh;
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+/* Removed neonGlow animation since we're not using it anymore */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+  }
+}
+
+/* Easter egg animations */
+.secret-animation {
+  animation: secretPulse 2s infinite;
+}
+
+@keyframes secretPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 400ms, transform 400ms;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your navbar height */
+}
+
+/* Konami code easter egg */
+.konami-active {
+  animation: rainbow-bg 5s linear infinite;
+}
+
+@keyframes rainbow-bg {
+  0% {
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+  16.6% {
+    background-color: rgba(255, 165, 0, 0.1);
+  }
+  33.3% {
+    background-color: rgba(255, 255, 0, 0.1);
+  }
+  50% {
+    background-color: rgba(0, 128, 0, 0.1);
+  }
+  66.6% {
+    background-color: rgba(0, 0, 255, 0.1);
+  }
+  83.3% {
+    background-color: rgba(75, 0, 130, 0.1);
+  }
+  100% {
+    background-color: rgba(238, 130, 238, 0.1);
+  }
+}

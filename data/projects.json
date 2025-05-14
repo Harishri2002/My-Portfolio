@@ -1,0 +1,47 @@
+[
+  {
+    "id": "epitome-2k24",
+    "title": "Epitome-2k24",
+    "imageSrc": "projects/epitome.png",
+    "description": "Epitome 2K24 is an immersive website created for St. Aloysius College's national-level fest, Epitome. The platform features a futuristic design with dynamic 3D models and a gaming-inspired user interface. It offers an engaging experience for visitors, showcasing event details, schedules, Immersively.",
+    "skills": ["Next.js", "Three.js", "Node", "MongoDB"],
+    "demo": "https://epitome-aimit.vercel.app/",
+    "source": "https://github.com/Harishri2002"
+  },
+  {
+    "id": "liblinx",
+    "title": "Liblinx",
+    "imageSrc": "projects/Liblinx.png",
+    "description": "Liblinx is a modern library management system featuring QR code entry and an integrated Android app for seamless book rentals and tracking. It also includes a MERN stack-based admin panel, enabling efficient management of library operations, user accounts, and inventory, all in one streamlined platform.",
+    "skills": ["React", "Express", "Node", "MongoDB", "React-native"],
+    "demo": "https://github.com/Harishri2002",
+    "source": "https://github.com/Harishri2002"
+  },
+  {
+    "id": "crafty-corner",
+    "title": "Crafty Corner",
+    "imageSrc": "projects/craftycorner.png",
+    "description": " CraftyCorner, is a platform designed for people who craft from home. It empowers artisans, DIY enthusiasts, and small-scale crafters to turn their creative passions into a source of income. CraftyCorner provides a user-friendly experience where sellers can set up an online shop, display their products.",
+    "skills": ["Html", "CSS", "PHP", "MySql"],
+    "demo": "https://github.com/Harishri2002",
+    "source": "https://github.com/Harishri2002"
+  },
+  {
+    "id": "epujeri",
+    "title": "Epujeri",
+    "imageSrc": "projects/Epujeri.png",
+    "description": "Epujeri is an Android application designed for family members to stay connected and informed about upcoming events within their family. It integrates real-time chat functionality, allowing members to communicate effortlessly. The app also features a notification system that keeps users updated on upcoming events.",
+    "skills": ["React-native", "Firebase"],
+    "demo": "https://github.com/Harishri2002",
+    "source": "https://github.com/Harishri2002"
+  },
+  {
+    "id": "the-escape",
+    "title": "The Escape",
+    "imageSrc": "projects/theescape.png",
+    "description": "The Escape is an engaging, browser-based game that challenges players to run and evade enemies while navigating through various obstacles. Created entirely with pure JavaScript and without any external libraries, the game emphasizes speed and agility as players strive to achieve the highest score possible.",
+    "skills": ["Javascript", "Html", "CSS"],
+    "demo": "https://github.com/Harishri2002",
+    "source": "https://github.com/Harishri2002"
+  }
+]

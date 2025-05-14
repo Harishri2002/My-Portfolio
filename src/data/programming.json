@@ -1,0 +1,22 @@
+[
+  {
+    "title": "JavaScript",
+    "imageSrc": "skills/js.png"
+  },
+  {
+    "title": "Python",
+    "imageSrc": "skills/Python.png"
+  },
+  {
+    "title": "C++",
+    "imageSrc": "skills/C++.png"
+  },
+  {
+    "title": "Java",
+    "imageSrc": "skills/Java.png"
+  },
+  {
+    "title": "C",
+    "imageSrc": "skills/C.png"
+  }
+]

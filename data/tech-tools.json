@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Git",
+    "imageSrc": "skills/Git.png"
+  },
+  {
+    "title": "NPM",
+    "imageSrc": "skills/NPM.png"
+  },
+  {
+    "title": "Vite.js",
+    "imageSrc": "skills/Vite.js.png"
+  },
+  {
+    "title": "GitHub",
+    "imageSrc": "skills/GitHub.png"
+  },
+  {
+    "title": "VS Code",
+    "imageSrc": "skills/VS.png"
+  },
+  {
+    "title": "Figma",
+    "imageSrc": "skills/figma.png"
+  }
+]

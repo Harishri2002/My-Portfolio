@@ -13,7 +13,7 @@ import { EasterEgg } from "@/components/easter-egg"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Suspense fallback={<PageLoader />}>
+      <Suspense fallback={null}>
         <Navbar />
         <Hero />
         <About />

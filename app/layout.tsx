@@ -63,7 +63,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${roboto.variable} ${inter.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Suspense>{children}</Suspense>
-          <Analytics />
+          {/* <Analytics /> */}
           <SpeedInsights />
           <Toaster />
         </ThemeProvider>

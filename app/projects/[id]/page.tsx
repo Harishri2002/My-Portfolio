@@ -50,9 +50,9 @@ export default function ProjectPage({ params }: Props) {
   // For demo purposes, create additional screenshots based on the main image
   const screenshots = [
     getImageUrl(project.imageSrc) || "/placeholder.png",
-    "/placeholder.svg?height=600&width=800&text=Screenshot+2",
-    "/placeholder.svg?height=600&width=800&text=Screenshot+3",
-    "/placeholder.svg?height=600&width=800&text=Screenshot+4",
+    // "/placeholder.svg?height=600&width=800&text=Screenshot+2",
+    // "/placeholder.svg?height=600&width=800&text=Screenshot+3",
+    // "/placeholder.svg?height=600&width=800&text=Screenshot+4",
   ]
 
   return (

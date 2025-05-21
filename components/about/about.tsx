@@ -1,14 +1,12 @@
 "use client"
 import { getImageUrl } from "@/lib/utils"
 import styles from "./about.module.css"
-import { Canvass } from "./canvass"
 
 export function About() {
   return (
     <section className={styles.container} id="about">
       <h2 className={styles.title}>About</h2>
       <div className={styles.content}>
-        <Canvass className={styles.aboutImage} />
         <ul className={styles.aboutItems}>
           <li className={styles.aboutItem}>
             <img src={getImageUrl("about/cursorIcon.png") || "/placeholder.png"} alt="Cursor image" />

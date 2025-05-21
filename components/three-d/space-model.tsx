@@ -14,14 +14,14 @@ export function SpaceModel({ isMobile }: SpaceModelProps) {
   const [mixer] = useState(() => new THREE.AnimationMixer(scene))
   const [modelSettings, setModelSettings] = useState({
     scale: isMobile ? 4.2 : 1.8,
-    position: isMobile ? [-4, -5.5, 0.5] : [-3, -3.25, 0.5],
+    position: isMobile ? [-3, -5.5, 0.5] : [-2, -3.25, 0.5],
   })
 
   useEffect(() => {
     // Adjust model scale and position for mobile
     setModelSettings({
       scale: isMobile ? 4.2 : 1.8,
-      position: isMobile ? [-4, -5.5, 0.5] : [-3, -3.25, 0.5],
+      position: isMobile ? [-2, -5.5, 0.5] : [-1, -3.25, 0.5],
     })
   }, [isMobile])
 

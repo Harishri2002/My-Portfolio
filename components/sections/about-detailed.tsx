@@ -23,7 +23,7 @@ export function AboutDetailed() {
         </div>
         <div className="relative h-80 w-full rounded-lg overflow-hidden">
           <Image
-            src="/placeholder.svg?height=400&width=400"
+            src="/assets/about/about.jpg?height=500&width=400"
             alt="Harishri B R"
             fill
             className="object-cover"
@@ -33,18 +33,26 @@ export function AboutDetailed() {
         </div>
       </div>
 
-      <div>
+       <div>
         <h2 className="text-3xl font-bold mb-6">My Journey</h2>
         <div className="relative border-l-2 border-primary/50 pl-8 space-y-12 ml-4">
           <div className="relative">
             <div className="absolute -left-[41px] top-0 h-6 w-6 rounded-full bg-primary"></div>
             <h3 className="text-2xl font-semibold">Education</h3>
-            <p className="text-muted-foreground mb-4">2018 - 2022</p>
+            <p className="text-muted-foreground mb-4">2020 - 2025</p>
             <Card>
               <CardContent className="p-6">
                 <h4 className="text-xl font-medium mb-2">Bachelor of Computer Science</h4>
                 <p className="text-muted-foreground">
-                  Graduated with honors, focusing on web development, algorithms, and software engineering principles.
+                  Dr. P. Dayananda Pai - P. Satisha Pai Government First Grade College, Mangalore. Graduated with a focus on web development, algorithms, and software engineering principles.
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h4 className="text-xl font-medium mb-2">Master of Computer Application</h4>
+                <p className="text-muted-foreground">
+                  AIMIT - St Aloysius Institute of Management and IT. Specialized in advanced software development and IT management.
                 </p>
               </CardContent>
             </Card>
@@ -53,12 +61,12 @@ export function AboutDetailed() {
           <div className="relative">
             <div className="absolute -left-[41px] top-0 h-6 w-6 rounded-full bg-primary"></div>
             <h3 className="text-2xl font-semibold">Career Start</h3>
-            <p className="text-muted-foreground mb-4">2022 - 2023</p>
+            <p className="text-muted-foreground mb-4">2022 - 2025</p>
             <Card>
               <CardContent className="p-6">
-                <h4 className="text-xl font-medium mb-2">Junior Developer</h4>
+                <h4 className="text-xl font-medium mb-2">Freelance Developer</h4>
                 <p className="text-muted-foreground">
-                  Started my professional journey working on web applications and learning industry best practices.
+                  Worked on various web and mobile application projects, collaborating with clients to deliver customized solutions and honing skills in full-stack development.
                 </p>
               </CardContent>
             </Card>
@@ -67,12 +75,12 @@ export function AboutDetailed() {
           <div className="relative">
             <div className="absolute -left-[41px] top-0 h-6 w-6 rounded-full bg-primary"></div>
             <h3 className="text-2xl font-semibold">Present</h3>
-            <p className="text-muted-foreground mb-4">2023 - Present</p>
+            <p className="text-muted-foreground mb-4">February 2025 - Present</p>
             <Card>
               <CardContent className="p-6">
-                <h4 className="text-xl font-medium mb-2">Full Stack Developer</h4>
+                <h4 className="text-xl font-medium mb-2">Software Developer Intern</h4>
                 <p className="text-muted-foreground">
-                  Currently working on cutting-edge web and mobile applications, continuously expanding my skill set.
+                  Currently interning at DevAppSys IT Solutions Pvt. Ltd., contributing to innovative web and mobile applications while gaining hands-on experience in a professional environment.
                 </p>
               </CardContent>
             </Card>
@@ -92,7 +100,7 @@ export function AboutDetailed() {
 
           <TabsContent value="frontend" className="mt-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {["HTML", "CSS", "React", "Tailwind", "React Native"].map((skill) => (
+              {["HTML", "CSS", "React", "Tailwind", "native"].map((skill) => (
                 <SkillCard key={skill} name={skill} />
               ))}
             </div>
@@ -100,7 +108,7 @@ export function AboutDetailed() {
 
           <TabsContent value="backend" className="mt-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {["Node.js", "MongoDB", "Express", "MySQL", "PHP"].map((skill) => (
+              {["node", "MongoDB", "Express", "MySQL", "PHP"].map((skill) => (
                 <SkillCard key={skill} name={skill} />
               ))}
             </div>
@@ -108,7 +116,7 @@ export function AboutDetailed() {
 
           <TabsContent value="programming" className="mt-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {["JavaScript", "Python", "C++", "Java", "C"].map((skill) => (
+              {["js", "Python", "C++", "Java", "C"].map((skill) => (
                 <SkillCard key={skill} name={skill} />
               ))}
             </div>
@@ -116,7 +124,7 @@ export function AboutDetailed() {
 
           <TabsContent value="tools" className="mt-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {["Git", "NPM", "Vite.js", "GitHub", "VS Code", "Figma"].map((skill) => (
+              {["Git", "NPM", "Vite.js", "GitHub", "VS", "Figma"].map((skill) => (
                 <SkillCard key={skill} name={skill} />
               ))}
             </div>
@@ -133,7 +141,7 @@ function SkillCard({ name }: { name: string }) {
       <CardContent className="p-6 flex flex-col items-center">
         <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
           <Image
-            src={`/placeholder.svg?height=50&width=50&text=${name}`}
+            src={`/assets/skills/${name.toLowerCase().replace(/\s+/g, "-")}.png`}
             alt={name}
             width={50}
             height={50}

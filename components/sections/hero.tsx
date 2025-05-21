@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 export function Hero() {
   const [text] = useTypewriter({
     words: ["Harishri B R", "a Developer", "a Designer", "Creative Thinker"],
-    loop: {},
     typeSpeed: 120,
     deleteSpeed: 80,
   })

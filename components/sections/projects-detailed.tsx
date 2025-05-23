@@ -78,7 +78,7 @@ export function ProjectsDetailed() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       )}
@@ -97,61 +97,80 @@ interface Project {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Prevent navigation if clicking on buttons
+    const target = e.target as HTMLElement
+    if (target.closest('button') || target.closest('a[href^="http"]')) {
+      e.preventDefault()
+      return
+    }
+  }
+
+  const handleExternalLinkClick = (e: React.MouseEvent, url: string) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg h-full flex flex-col group">
-        <div className="relative h-48 w-full overflow-hidden">
-          <Image
-            src={getImageUrl(project.imageSrc) || "/placeholder.png"}
-            alt={`Image of ${project.title}`}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
-
-        <CardHeader>
-          <CardTitle>{project.title}</CardTitle>
-          <CardDescription className="line-clamp-3">{project.description}</CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex-grow">
-          <div className="flex flex-wrap gap-2 mt-2">
-            {project.skills.map((skill, index) => (
-              <Badge key={index} variant="secondary">
-                {skill}
-              </Badge>
-            ))}
+      <Link href={`/projects/${project.id}`} onClick={handleCardClick}>
+        <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg h-full flex flex-col group cursor-pointer">
+          <div className="relative h-48 w-full overflow-hidden">
+            <Image
+              src={getImageUrl(project.imageSrc) || "/placeholder.png"}
+              alt={`Image of ${project.title}`}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
-        </CardContent>
 
-        <CardFooter className="flex justify-between">
-          <Button asChild variant="outline" size="sm">
-            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+          <CardHeader>
+            <CardTitle>{project.title}</CardTitle>
+            <CardDescription className="line-clamp-3">{project.description}</CardDescription>
+          </CardHeader>
+
+          <CardContent className="flex-grow">
+            <div className="flex flex-wrap gap-2 mt-2">
+              {project.skills.map((skill, skillIndex) => (
+                <Badge key={skillIndex} variant="secondary">
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+
+          <CardFooter className="flex justify-between relative z-10">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={(e) => handleExternalLinkClick(e, project.demo)}
+              className="flex items-center gap-2"
+            >
               <ExternalLink className="h-4 w-4" /> Demo
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="sm">
-            <a href={project.source} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={(e) => handleExternalLinkClick(e, project.source)}
+              className="flex items-center gap-2"
+            >
               <Github className="h-4 w-4" /> Source
-            </a>
-          </Button>
-        </CardFooter>
+            </Button>
+          </CardFooter>
 
-        <Link href={`/projects/${project.id}`} className="absolute inset-0 z-10">
-          <span className="sr-only">View {project.title} details</span>
-        </Link>
-
-        <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Button size="sm" className="rounded-full">
-            <ArrowRight className="h-4 w-4 mr-1" /> Details
-          </Button>
-        </div>
-      </Card>
+          {/* <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <Button size="sm" className="rounded-full">
+              <ArrowRight className="h-4 w-4 mr-1" /> Details
+            </Button>
+          </div> */}
+        </Card>
+      </Link>
     </motion.div>
   )
 }

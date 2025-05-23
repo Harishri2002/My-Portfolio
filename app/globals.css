@@ -102,7 +102,14 @@ html {
 }
 
 .rainbow-text {
-  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-image: linear-gradient(
+    to right,
+    #8e2de2,   /* vivid purple */
+    #4a00e0,   /* deep indigo */
+    #00c9ff,   /* sky blue */
+    #92fe9d,   /* mint green */
+    #8e2de2    /* back to purple for looping */
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: rainbow-animation 1000s linear infinite;

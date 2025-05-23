@@ -17,7 +17,7 @@ const blogPosts: BlogPostType[] = [
   slug: "chunked-uploading-best-practices",
   title: "Cracking Chunked Uploading: Why Dart + C Steals the Show",
   date: "2025-05-21",
-  coverImage: "/placeholder.svg?height=600&width=800&text=Chunked+Uploading",
+  coverImage: "/assets/blog/post1.png",
   excerpt:
     "Hey there! Let’s dive into chunked uploading in Flutter—figuring out the best way to handle big files without crashing your app. Spoiler: Dart + C is the winner!",
   content: (

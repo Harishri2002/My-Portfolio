@@ -28,7 +28,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Portfolio | Harishri B R",
+  title: "Harishri B R",
+  icons: {
+    icon: "/assets/favicon/favicon.ico",
+    shortcut: "/assets/favicon/favicon.ico",
+    apple: "/assets/favicon/favicon.ico",
+  },
   description: "Personal portfolio of Harishri B R - Full Stack Developer, Mobile App Developer, and UI/UX Designer",
   keywords: ["portfolio", "developer", "full stack", "mobile app", "UI/UX", "React", "Next.js", "Three.js"],
   authors: [{ name: "Harishri B R" }],
@@ -36,14 +41,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://harishri-portfolio.vercel.app",
-    title: "Portfolio | Harishri B R",
+    url: "https://harishribr.vercel.app/",
+    title: "Harishri B R",
     description: "Personal portfolio of Harishri B R - Full Stack Developer, Mobile App Developer, and UI/UX Designer",
     siteName: "Harishri B R Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | Harishri B R",
+    title: "Harishri B R",
     description: "Personal portfolio of Harishri B R - Full Stack Developer, Mobile App Developer, and UI/UX Designer",
     creator: "@harishri",
   },

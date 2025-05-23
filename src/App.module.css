@@ -55,3 +55,7 @@
     text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
   }
 }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}

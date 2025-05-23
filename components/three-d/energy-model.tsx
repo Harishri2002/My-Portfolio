@@ -17,16 +17,54 @@ export function EnergyModel({ isMobile }: EnergyModelProps) {
   const [scale, setScale] = useState(1.8);
   const [position, setPosition] = useState<[number, number, number]>([0, 0, 0]);
 
+  // Clone and preserve materials from GLTF
+  const clonedScene = useMemo(() => {
+    const cloned = scene.clone();
+    
+    // Traverse and fix materials
+    cloned.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        if (mesh.material) {
+          // Clone the material to avoid modifying the original
+          if (Array.isArray(mesh.material)) {
+            mesh.material = mesh.material.map(mat => {
+              const clonedMat = mat.clone();
+              // Ensure materials respond to lighting properly
+              if (clonedMat instanceof THREE.MeshStandardMaterial || 
+                  clonedMat instanceof THREE.MeshPhysicalMaterial) {
+                clonedMat.needsUpdate = true;
+              }
+              return clonedMat;
+            });
+          } else {
+            mesh.material = mesh.material.clone();
+            if (mesh.material instanceof THREE.MeshStandardMaterial || 
+                mesh.material instanceof THREE.MeshPhysicalMaterial) {
+              mesh.material.needsUpdate = true;
+            }
+          }
+        }
+        
+        // Enable shadows
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+      }
+    });
+    
+    return cloned;
+  }, [scene]);
+
   // Handle GLTF animations
   useEffect(() => {
     if (animations && animations.length > 0) {
-      const action = mixer.clipAction(animations[0], scene);
+      const action = mixer.clipAction(animations[0], clonedScene);
       action.play();
     }
     return () => {
       mixer.stopAllAction();
     };
-  }, [animations, scene, mixer]);
+  }, [animations, clonedScene, mixer]);
 
   // Responsive scale and position
   useEffect(() => {
@@ -70,31 +108,31 @@ export function EnergyModel({ isMobile }: EnergyModelProps) {
 
   return (
     <group>
-      <ambientLight intensity={1.3} />
-      <hemisphereLight intensity={1} color="white" />
-      <pointLight position={[0, 10, 10]} intensity={1841} />
-      <spotLight
-        position={[0, 20, 20]}
-        angle={0.3}
-        penumbra={0.5}
-        intensity={2}
+      {/* Better lighting setup that preserves GLTF colors */}
+      <ambientLight intensity={0.6} />
+      <directionalLight 
+        position={[5, 5, 5]} 
+        intensity={1} 
         castShadow
-        shadow-mapSize={1024}
+        shadow-mapSize={[2048, 2048]}
       />
+      <directionalLight 
+        position={[-5, 5, -5]} 
+        intensity={0.5} 
+      />
+      <pointLight position={[0, 10, 10]} intensity={0.8} />
 
       {/* Group containing GLTF model and energy effects */}
       <group ref={groupRef} position={position} scale={scale}>
-        {/* GLTF Model */}
-        <primitive object={scene} />
+        {/* GLTF Model with preserved materials */}
+        <primitive object={clonedScene} />
 
         {/* Particles */}
         <points ref={particlesRef}>
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"
-              count={particleCount}
-              array={particlePositions}
-              itemSize={3}
+              args={[particlePositions, 3]}
             />
           </bufferGeometry>
           <pointsMaterial
@@ -148,7 +186,13 @@ export default function SendOrb() {
   return (
     <Canvas
       shadows
-      gl={{ preserveDrawingBuffer: true }}
+      frameloop="always"
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: true,
+        toneMapping: THREE.ACESFilmicToneMapping,
+        toneMappingExposure: 1.0
+      }}
       camera={{ position: [0, 0, 10], fov: 60 }}
     >
       <Suspense fallback={null}>

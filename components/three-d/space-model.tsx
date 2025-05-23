@@ -11,7 +11,7 @@ interface SpaceModelProps {
 
 export function SpaceModel({ isMobile }: SpaceModelProps) {
   const { scene, animations } = useGLTF('/3dmodels/SpaceBoy/scene.gltf')
-  const [mixer] = useState(() => new THREE.AnimationMixer(scene))
+  const mixerRef = useRef<THREE.AnimationMixer | null>(null)
   const [modelSettings, setModelSettings] = useState({
     scale: isMobile ? 4.2 : 1.8,
     position: isMobile ? [-3, -5.5, 0.5] : [-2, -3.25, 0.5],
@@ -26,19 +26,40 @@ export function SpaceModel({ isMobile }: SpaceModelProps) {
   }, [isMobile])
 
   useEffect(() => {
-    if (animations && animations.length > 0) {
-      const action = mixer.clipAction(animations[0], scene)
-      action.play()
+    if (!mixerRef.current) {
+      mixerRef.current = new THREE.AnimationMixer(scene)
     }
+
+    const mixer = mixerRef.current
+
+    if (animations && animations.length > 0) {
+      // Clear any existing actions
+      mixer.stopAllAction()
+      
+      // Play all animations or specific one
+      animations.forEach((clip) => {
+        const action = mixer.clipAction(clip)
+        action.play()
+        // Ensure animation loops
+        action.setLoop(THREE.LoopRepeat, Infinity)
+      })
+    }
+
     // Cleanup on unmount
     return () => {
-      mixer.stopAllAction()
+      if (mixerRef.current) {
+        mixerRef.current.stopAllAction()
+      }
     }
-  }, [animations, scene, mixer])
+  }, [animations, scene])
 
-  // Animate the astronaut model
-  useFrame((_, delta) => {
-    mixer.update(delta)
+  // Animate the astronaut model with consistent timing
+  useFrame((state, delta) => {
+    if (mixerRef.current) {
+      // Clamp delta to prevent large jumps
+      const clampedDelta = Math.min(delta, 0.1)
+      mixerRef.current.update(clampedDelta)
+    }
   })
 
   return (

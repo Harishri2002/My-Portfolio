@@ -63,7 +63,9 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
+
 
 .canvas-load {
   font-size: 14px;

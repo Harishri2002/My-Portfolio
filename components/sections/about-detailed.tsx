@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react";
 
 export function AboutDetailed() {
   return (
@@ -136,20 +137,46 @@ export function AboutDetailed() {
 }
 
 function SkillCard({ name }: { name: string }) {
+  const getImagePath = (skillName: string) => {
+    // Normalize the skill name for consistent file naming
+    const normalizedName = skillName.toLowerCase().replace(/\s+/g, "-");
+    
+    // Handle special cases for common naming differences
+    const nameMap: { [key: string]: string } = {
+      "js": "javascript",
+      "native": "react-native",
+      "node": "nodejs",
+      "vs": "vscode"
+    };
+    
+    const finalName = nameMap[normalizedName] || normalizedName;
+    return `/assets/skills/${finalName}.png`;
+  };
+
+  const [imageError, setImageError] = useState(false);
+
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-6 flex flex-col items-center">
         <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-          <Image
-            src={`/assets/skills/${name.toLowerCase().replace(/\s+/g, "-")}.png`}
-            alt={name}
-            width={50}
-            height={50}
-            className="rounded-full"
-          />
+          {!imageError ? (
+            <Image
+              src={getImagePath(name)}
+              alt={name}
+              width={50}
+              height={50}
+              className="rounded-full"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            // Fallback when image fails to load
+            <span className="text-primary font-bold text-lg">
+              {name.charAt(0).toUpperCase()}
+            </span>
+          )}
         </div>
         <p className="font-medium text-center">{name}</p>
       </CardContent>
     </Card>
-  )
+  );
 }

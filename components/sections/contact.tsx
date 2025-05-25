@@ -48,7 +48,7 @@ export function Contact() {
               <div className="flex flex-col items-center p-4 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors">
                 <Phone className="h-8 w-8 text-primary mb-3" />
                 <h4 className="font-medium mb-1">Phone</h4>
-                <p className="text-sm text-muted-foreground">+91 9876543210</p>
+                <p className="text-sm text-muted-foreground">+91 8921875876</p>
               </div>
 
               <div className="flex flex-col items-center p-4 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors">

@@ -3,10 +3,10 @@ import type { Metadata } from "next"
 import { Inter, Outfit, Roboto } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 import { Toaster } from "@/components/ui/toaster"
+import { Analytics } from "@vercel/analytics/next"
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -68,7 +68,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${roboto.variable} ${inter.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Suspense>{children}</Suspense>
-          {/* <Analytics /> */}
+           <Analytics />
           <SpeedInsights />
           <Toaster />
         </ThemeProvider>

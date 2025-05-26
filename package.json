@@ -45,6 +45,7 @@
     "@react-three/fiber": "latest",
     "@sveltejs/kit": "latest",
     "@tailwindcss/typography": "latest",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "latest",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",

@@ -43,5 +43,14 @@
     "skills": ["Javascript", "Html", "CSS"],
     "demo": "https://github.com/Harishri2002",
     "source": "https://github.com/Harishri2002"
-  }
+  },
+  {
+    "id": "code-freeze",
+    "title": "Code Freeze",
+    "imageSrc": "projects/codefreeze.jpg",
+    "description": "Code Freeze is a lightweight and efficient Visual Studio Code extension that enables toggling read-only mode for any file using a keyboard shortcut, context menu, or Command Palette. Protect your files from accidental edits with clear visual indicators like status bar updates, and maintain persistent state across sessions for a seamless experience.",
+    "skills": ["JavaScript", "VS Code API", "TypeScript"],
+    "demo": "https://marketplace.visualstudio.com/items?itemName=HarishriBR.CodeFreeze",
+    "source": "https://github.com/Harishri2002/CodeFreeze"
+}
 ]

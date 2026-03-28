@@ -52,5 +52,23 @@
     "skills": ["JavaScript", "VS Code API", "TypeScript"],
     "demo": "https://marketplace.visualstudio.com/items?itemName=HarishriBR.CodeFreeze",
     "source": "https://github.com/Harishri2002/CodeFreeze"
-}
+  },
+  {
+    "id": "quiz-host-live",
+    "title": "Quiz Host Live",
+    "imageSrc": "projects/quizhostlive.png",
+    "description": "A modern, interactive, and customizable quiz hosting application built with React and Electron. Designed for live events, it features a broadcast-ready UI, multiple round types, real-time scoring, integrated sound effects, and portable quiz saving for seamless hosting.",
+    "skills": ["React", "Electron", "Framer Motion"],
+    "demo": "https://harishri2002.github.io/Quiz-Host-Live/",
+    "source": "https://github.com/Harishri2002/Quiz-Host-Live"
+  },
+  {
+    "id": "the-living",
+    "title": "The Living",
+    "imageSrc": "projects/theliving.png",
+    "description": "The Living is a premium social platform and species wiki for pet enthusiasts. Built with Next.js, it combines a biodiversity encyclopedia, community forums, marketplace, gamification system, and real-time interactions into a modern, feature-rich ecosystem.",
+    "skills": ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Tailwind CSS"],
+    "demo": "https://theliving.wiki/",
+    "source": ""
+  }
 ]

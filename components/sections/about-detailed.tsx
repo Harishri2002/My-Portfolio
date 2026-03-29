@@ -28,7 +28,7 @@ export function AboutDetailed() {
         </div>
         <div className="relative h-80 w-full rounded-lg overflow-hidden">
           <Image
-            src="/assets/about/about.jpg?height=500&width=400"
+            src="/assets/about/about.jpg"
             alt="Harishri B R"
             fill
             className="object-cover"
